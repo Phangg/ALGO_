@@ -2,27 +2,28 @@ import sys
 from collections import deque
 
 def bfs(s):
-    ans = []                            # 바이러스 전염된 컴퓨터 리스트 (1번 본인 제외)
-    q = deque([s])
-    visited[s] = 1
+    cnt = 0                                     # 몇개의 컴퓨터를 지나가는지 체크
+    visited[s] = 1                              # 지나감 체크
+    q = deque([s])                              # 시작 지점
     while q:
         s = q.popleft()
-        for i in com[s]:
+        for i in arr[s]:
             if visited[i] == 0:
+                visited[i] = 1                  # 지나감 체크
                 q.append(i)
-                ans.append(i)
-                visited[i] = 1
-    return len(ans)                     # 몇개?
+                cnt += 1                        # 카운팅
+    return cnt
 
 
-N = int(sys.stdin.readline())
-M = int(sys.stdin.readline())
-com = [[] for _ in range(N+1)]
-for _ in range(M):
+
+com = int(sys.stdin.readline())
+line = int(sys.stdin.readline())
+arr = [[] for _ in range(com+1)]                    # 1번 컴퓨터부터 시작 -> com+1 개 리스트
+for _ in range(line):
     x, y = map(int, sys.stdin.readline().split())
-    com[x].append(y)
-    com[y].append(x)
+    arr[x].append(y)                                # 양방향으로 연결된 배열로 만들어 주기
+    arr[y].append(x)
 
-visited = [0] * (N+1)
-s = 1
-print(bfs(s))
+visited = [0] * (com+1)
+start = 1
+print(bfs(start))
