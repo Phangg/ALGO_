@@ -1,6 +1,5 @@
 import sys
 import heapq
-from collections import defaultdict
 
 def dij(node):
     dist = [float('inf')] * (V+1)
@@ -10,7 +9,7 @@ def dij(node):
 
     while hq:
         now_w, now_v = heapq.heappop(hq)
-        for w, v in graph_dict[now_v]:
+        for w, v in adj_lst[now_v]:
             w += now_w
             if w < dist[v]:
                 dist[v] = w
@@ -20,10 +19,10 @@ def dij(node):
 
 V, E = map(int, sys.stdin.readline().split())
 start = int(sys.stdin.readline())
-graph_dict = defaultdict(list)
+adj_lst = [[] * (V+1) for _ in range(V+1)]
 for _ in range(E):
     u, v, w = map(int, sys.stdin.readline().split())
-    graph_dict[u].append([w, v])
+    adj_lst[u].append((w, v))
 
 x = dij(start)
 
