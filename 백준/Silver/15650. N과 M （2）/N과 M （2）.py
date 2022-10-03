@@ -11,7 +11,6 @@ def nCr(s):
                 ans.pop()
 
 N, M = map(int, sys.stdin.readline().split())
-lst = [x for x in range(1, N+1)]
 
 ans = []
 nCr(1)
