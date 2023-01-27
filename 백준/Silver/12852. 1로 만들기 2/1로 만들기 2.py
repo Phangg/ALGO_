@@ -19,8 +19,12 @@ def bfs(num):
         # [min_n // ?] 리스트와 n_lst 를 '+' 연산자를 통해 합쳐주기
         if min_n % 2 == 0:
             q.append([min_n//2] + n_lst)
+            if min_n//2 == 1:
+                return [1] + n_lst
         if min_n % 3 == 0:
             q.append([min_n//3] + n_lst)
+            if min_n//3 == 1:
+                return [1] + n_lst
 
         q.append([min_n - 1] + n_lst)
 
