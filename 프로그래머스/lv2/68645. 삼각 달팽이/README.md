@@ -1,10 +1,10 @@
 # [level 2] 삼각 달팽이 - 68645 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/68645) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/68645?language=swift) 
 
 ### 성능 요약
 
-메모리: 42.9 MB, 시간: 208.46 ms
+메모리: 108 MB, 시간: 39.45 ms
 
 ### 구분
 
