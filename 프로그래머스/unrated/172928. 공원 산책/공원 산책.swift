@@ -22,35 +22,27 @@ func solution(_ park: [String], _ routes: [String]) -> [Int] {
     guard var (x, y) = getStartPoint(park) else {
         return []
     }
-    // print(x, y)
     
     for r in routes {
         let (way, cnt) = getParseData(r)
         let (i, j) = wayDictionary[way]!
-        
-        var flag = true
-        for k in 1...cnt {
+
+        let isValidMove = (1...cnt).allSatisfy { k in
             let nx = x + (i * k)
             let ny = y + (j * k)
-            if 0 > nx || nx >= row || 0 > ny || ny >= col {
-                flag = false
-                break
+
+            guard (0..<row).contains(nx), (0..<col).contains(ny) else {
+                return false
             }
+
             let charIndex = park[nx].index(park[nx].startIndex, offsetBy: ny)
-            if park[nx][charIndex] == "X" {
-                flag = false
-                break
-            }
+            return park[nx][charIndex] != "X"
         }
-        
-        if flag {
+
+        if isValidMove {
             x += (i * cnt)
             y += (j * cnt)
         }
-        
-        // print(way, cnt)
     }
-    
-    
     return [x, y]
 }
