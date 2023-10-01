@@ -14,7 +14,7 @@ func solution(_ keymap: [String], _ targets: [String]) -> [Int] {
             }
         }
     }
-    
+
     for target in targets {
         var res = 0
         for t in target.map { String($0) } {
@@ -28,5 +28,5 @@ func solution(_ keymap: [String], _ targets: [String]) -> [Int] {
         answer.append(res)
     }
     
-    return answer    
+    return answer
 }
